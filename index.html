@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Jr Henry | Accueil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { background: #020617; font-family: 'Inter', sans-serif; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .gradient-text { background: linear-gradient(to right, #38bdf8, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 glass px-6 py-5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-black tracking-widest text-sky-400">JJH.</div>
+            <button id="menu-btn" class="md:hidden text-sky-400 text-2xl">☰</button>
+            <div id="nav-links" class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+                <a href="index.html" class="text-sky-400">Accueil</a>
+                <a href="apropos.html" class="hover:text-sky-400">À propos</a>
+                <a href="engagement.html" class="hover:text-sky-400">Engagement</a>
+                <a href="vision.html" class="hover:text-sky-400">Vision nationale</a>
+                <a href="idees.html" class="hover:text-sky-400">Réflexions</a>
+                <a href="impact.html" class="hover:text-sky-400">Impact social</a>
+                <a href="contact.html" class="hover:text-sky-400">Contact</a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden flex-col items-center py-6 gap-4 glass mt-4 md:hidden text-xs font-bold uppercase">
+            <a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="engagement.html">Engagement</a>
+            <a href="vision.html">Vision</a><a href="idees.html">Réflexions</a><a href="impact.html">Impact</a><a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <main class="pt-48 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+            <h1 class="text-6xl md:text-8xl font-black leading-tight tracking-tighter">
+                Penser aujourd’hui.<br/><span class="gradient-text">Structurer demain.</span>
+            </h1>
+            <p class="text-xl text-slate-400 leading-relaxed font-light">
+                Je me construis par le savoir, l’action et la responsabilité. Enseignant universitaire, entrepreneur et investisseur social, j’évolue au croisement de l’éducation et du développement économique.
+            </p>
+            <div class="glass p-6 rounded-2xl border-l-4 border-sky-500">
+                <p class="italic text-slate-300">"Mon engagement est simple : contribuer à un État plus efficace, une économie plus structurée et une société plus équitable."</p>
+            </div>
+            <a href="apropos.html" class="inline-block px-10 py-4 bg-sky-600 rounded-full font-bold shadow-lg shadow-sky-500/20">Explorer mon parcours</a>
+        </div>
+        <div class="space-y-6">
+            <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                <img src="foto.jpg.jpg.jpg" alt="Joseph Jr Henry" class="w-full object-cover aspect-square grayscale hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <video controls class="w-full rounded-xl"><source src="video-intro.mp4"></video>
+                <p class="text-center text-[10px] uppercase tracking-widest mt-3 font-bold text-sky-400">« Le changement commence par la structure. »</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.onclick = () => menu.classList.toggle('hidden');
+    </script>
+</body>
+</html>
