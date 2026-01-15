@@ -15,66 +15,76 @@
             border-radius: 50%; z-index: -1; filter: blur(80px); top: 50%; left: 50%; transform: translate(-50%, -50%);
         }
 
-        /* NAVBAR FIX - Menm jan ak paj Impact la */
+        /* NAVBAR FIX */
         .custom-nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 80px;
-            background: #020617; 
+            background: #020617 !important; 
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 24px;
-            z-index: 9999; 
+            z-index: 99999 !important; 
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
+        /* BOUTON HAMBURGER FLASHY */
         #menu-btn {
-            display: block; 
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid #38bdf8;
-            border-radius: 8px;
-            padding: 8px;
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            background: rgba(56, 189, 248, 0.15) !important;
+            border: 2px solid #38bdf8 !important;
+            border-radius: 12px;
+            padding: 10px;
             cursor: pointer;
-            z-index: 10000;
+            z-index: 100000 !important;
+            transition: all 0.3s ease;
         }
+
+        #menu-btn:active { transform: scale(0.9); }
 
         @media (min-width: 768px) {
-            #menu-btn { display: none; }
+            #menu-btn { display: none !important; }
         }
 
-        /* MENI MOBIL */
+        /* MENI MOBIL FULL SCREEN STYLE */
         #mobile-menu {
             display: none;
             position: fixed;
             top: 80px;
             left: 0;
             width: 100%;
-            background: #0f172a;
+            height: calc(100vh - 80px);
+            background: #020617;
             flex-direction: column;
             text-align: center;
-            padding: 20px 0;
-            z-index: 9998;
-            border-bottom: 2px solid #38bdf8;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            padding-top: 40px;
+            z-index: 99998 !important;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .mobile-link {
-            padding: 18px;
+            padding: 20px;
             text-transform: uppercase;
-            font-weight: bold;
-            font-size: 13px;
-            letter-spacing: 1px;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 2px;
             color: white;
             text-decoration: none;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .show-menu { display: flex !important; }
+        .show-menu { display: flex !important; animation: slideIn 0.3s ease-out; }
 
-        /* CONTACT CARDS */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .glass { 
             background: rgba(255, 255, 255, 0.02); 
             backdrop-filter: blur(20px); 
@@ -86,12 +96,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             background: rgba(255, 255, 255, 0.02);
         }
-
-        .contact-link:hover {
-            transform: scale(1.02);
-            background: rgba(56, 189, 248, 0.05);
-            border-color: #38bdf8;
-        }
     </style>
 </head>
 <body>
@@ -99,7 +103,7 @@
 
     <header class="custom-nav">
         <div class="text-2xl font-black tracking-tighter uppercase italic">
-            <span class="text-sky-500">JJ</span>H<span class="text-sky-500">.</span>
+            <span class="text-sky-400">JJ</span>H<span class="text-sky-400">.</span>
         </div>
         
         <nav class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -112,8 +116,8 @@
             <a href="contact.html" class="text-sky-400 border-b-2 border-sky-400 pb-1">Contact</a>
         </nav>
 
-        <button id="menu-btn">
-            <svg id="menu-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <button id="menu-btn" aria-label="Menu">
+            <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -167,18 +171,18 @@
 
         btn.onclick = (e) => {
             e.stopPropagation();
-            menu.classList.toggle('show-menu');
+            const isOpen = menu.classList.toggle('show-menu');
             
-            if (menu.classList.contains('show-menu')) {
+            if (isOpen) {
                 icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
             } else {
                 icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
             }
         };
 
-        // Fèmen meni an si moun nan klike nenpòt kote deyò
+        // Fèmen si w klike deyò
         document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            if (menu.classList.contains('show-menu') && !menu.contains(e.target) && !btn.contains(e.target)) {
                 menu.classList.remove('show-menu');
                 icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
             }
