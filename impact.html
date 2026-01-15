@@ -149,6 +149,75 @@
             }
         });
     </script>
+     <div class="lg:w-1/2 relative group">
+                <div class="absolute -inset-4 bg-gradient-to-r from-emerald-500 to-sky-500 rounded-[50px] blur-2xl opacity-20 transition duration-700 group-hover:opacity-40"></div>
+                <div class="relative overflow-hidden rounded-[40px] border border-white/10 shadow-2xl">
+                    <img src="terrain-interaction.jpg" alt="Interaction Terrain" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-1000">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="mb-32 px-6">
+        <div class="glass-card p-12 rounded-[40px] border-l-8 border-sky-500 max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight">
+                Organisation <span class="gradient-text italic">Sociale Reconnue</span>
+            </h2>
+
+            <p class="text-slate-300 text-lg leading-relaxed font-light mb-8">
+                <strong class="text-white">Foyer Espoir et Action</strong> est une organisation officiellement enregistrée,
+                œuvrant dans l’accompagnement communautaire, l’éducation et le renforcement des capacités locales.
+                <br/><br/>
+                Mon engagement au sein de cette structure s’inscrit dans une logique d’impact durable,
+                de responsabilité sociale et de contribution concrète au développement humain.
+            </p>
+
+            <a 
+                href="https://admpape-sketch.github.io/foyer-espoir-et-action/" 
+                target="_blank"
+                class="inline-flex items-center gap-3 px-8 py-4 rounded-full 
+                       bg-gradient-to-r from-emerald-500 to-sky-500 
+                       text-black font-bold uppercase tracking-wider text-sm
+                       hover:scale-105 transition-transform duration-300"
+            >
+                Visiter le site du Foyer
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M14 3h7m0 0v7m0-7L10 14"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+
+        btn.onclick = () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('mobile-menu-active');
+            
+            // Chanje fòm icon an (Hamburger pou X)
+            if (!menu.classList.contains('hidden')) {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            } else {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+            }
+        };
+
+        // Fèmen meni an si yon moun klike sou yon lyen
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.onclick = () => {
+                menu.classList.add('hidden');
+                menu.classList.remove('mobile-menu-active');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+            };
+        });
+    </script>
+</body>
+</html>
 
 </body>
 </html>
+
