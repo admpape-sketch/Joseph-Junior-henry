@@ -2,190 +2,143 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact | Joseph Jr Henry</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background: #020617; font-family: 'Plus Jakarta Sans', sans-serif; color: white; overflow-x: hidden; margin: 0; }
-        
-        .glow-bg {
-            position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
-            border-radius: 50%; z-index: -1; filter: blur(80px); top: 50%; left: 50%; transform: translate(-50%, -50%);
+        /* CSS piman bouk pou fòse vizibilite */
+        body { background: #020617; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
+
+        /* BOUTON SA A AP PARÈT OBLIJE */
+        #force-menu-btn {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            width: 50px !important;
+            height: 50px !important;
+            background-color: #38bdf8 !important; /* Ble syèl */
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 999999 !important; /* Pi wo pase tout bagay */
+            border: 2px solid white !important;
+            box-shadow: 0px 0px 15px rgba(56, 189, 248, 0.6) !important;
+            cursor: pointer !important;
         }
 
-        /* NAVBAR FIX */
-        .custom-nav {
-            position: fixed;
+        @media (min-width: 768px) {
+            #force-menu-btn { display: none !important; }
+        }
+
+        /* MENI A AP PRAN TOUT EKRAN AN */
+        #full-screen-menu {
+            position: fixed !important;
             top: 0;
             left: 0;
             width: 100%;
-            height: 80px;
-            background: #020617 !important; 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-            z-index: 99999 !important; 
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* BOUTON HAMBURGER FLASHY */
-        #menu-btn {
-            display: flex; 
+            height: 100%;
+            background: #020617 !important;
+            z-index: 999998 !important;
+            display: none; /* Kache pa defo */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(56, 189, 248, 0.15) !important;
-            border: 2px solid #38bdf8 !important;
-            border-radius: 12px;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 100000 !important;
-            transition: all 0.3s ease;
         }
 
-        #menu-btn:active { transform: scale(0.9); }
-
-        @media (min-width: 768px) {
-            #menu-btn { display: none !important; }
-        }
-
-        /* MENI MOBIL FULL SCREEN STYLE */
-        #mobile-menu {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 80px);
-            background: #020617;
-            flex-direction: column;
-            text-align: center;
-            padding-top: 40px;
-            z-index: 99998 !important;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .mobile-link {
-            padding: 20px;
-            text-transform: uppercase;
+        .menu-item {
+            font-size: 22px;
             font-weight: 800;
-            font-size: 16px;
-            letter-spacing: 2px;
             color: white;
             text-decoration: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin: 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .show-menu { display: flex !important; animation: slideIn 0.3s ease-out; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .glass { 
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-        }
-
-        .contact-link {
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.02);
-        }
+        .menu-item:active { color: #38bdf8; }
+        
+        .nav-visible { display: flex !important; }
     </style>
 </head>
 <body>
-    <div class="glow-bg"></div>
 
-    <header class="custom-nav">
-        <div class="text-2xl font-black tracking-tighter uppercase italic">
-            <span class="text-sky-400">JJ</span>H<span class="text-sky-400">.</span>
-        </div>
-        
-        <nav class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
-            <a href="index.html" class="hover:text-sky-400 transition">Accueil</a>
-            <a href="apropos.html" class="hover:text-sky-400 transition">À propos</a>
-            <a href="engagement.html" class="hover:text-sky-400 transition">Engagement</a>
-            <a href="vision.html" class="hover:text-sky-400 transition">Vision nationale</a>
-            <a href="idees.html" class="hover:text-sky-400 transition">Réflexions</a>
-            <a href="impact.html" class="hover:text-sky-400 transition">Impact social</a>
-            <a href="contact.html" class="text-sky-400 border-b-2 border-sky-400 pb-1">Contact</a>
-        </nav>
-
-        <button id="menu-btn" aria-label="Menu">
-            <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
-    </header>
-
-    <div id="mobile-menu">
-        <a href="index.html" class="mobile-link">Accueil</a>
-        <a href="apropos.html" class="mobile-link">À propos</a>
-        <a href="engagement.html" class="mobile-link">Engagement</a>
-        <a href="vision.html" class="mobile-link">Vision nationale</a>
-        <a href="idees.html" class="mobile-link">Réflexions</a>
-        <a href="impact.html" class="mobile-link">Impact social</a>
-        <a href="contact.html" class="mobile-link" style="color: #38bdf8;">Contact</a>
+    <div id="force-menu-btn">
+        <svg id="menu-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
     </div>
 
-    <main class="pt-40 pb-20 px-6 text-center max-w-3xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-black mb-12 tracking-tighter italic uppercase leading-tight">
-            Échanger, réfléchir, <br/> <span class="text-sky-400 underline decoration-emerald-500 underline-offset-8">construire.</span>
-        </h2>
-        
-        <div class="glass p-6 md:p-16 rounded-[40px] md:rounded-[60px] space-y-6 shadow-2xl relative">
-            <a href="mailto:henry.joseph.junior@gmail.com" class="contact-link block p-6 rounded-3xl group">
-                <span class="block text-[10px] uppercase tracking-[0.3em] text-slate-500 mb-2 font-bold">Email Professionnel</span>
-                <span class="text-lg md:text-2xl font-bold text-white group-hover:text-sky-400 transition break-all">henry.joseph.junior@gmail.com</span>
-            </a>
-
-            <a href="https://linkedin.com/in/votre-lien" target="_blank" class="contact-link block p-6 rounded-3xl group">
-                <span class="block text-[10px] uppercase tracking-[0.3em] text-slate-500 mb-2 font-bold">Réseau Stratégique</span>
-                <span class="text-xl md:text-2xl font-bold text-white group-hover:text-sky-400 transition">LinkedIn Profile</span>
-            </a>
-
-            <div class="pt-4">
-                <a href="https://wa.me/50939045395" target="_blank" class="block p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-3xl hover:bg-emerald-500/20 transition group">
-                    <span class="block text-[10px] uppercase tracking-[0.3em] text-emerald-500 mb-2 font-bold">WhatsApp Direct</span>
-                    <span class="text-xl md:text-2xl font-black text-emerald-400 tracking-wider">+509 39 04 53 95</span>
-                </a>
-            </div>
+    <nav class="hidden md:flex fixed top-0 w-full h-20 bg-[#020617]/80 backdrop-blur-md z-[50] items-center justify-between px-10 border-b border-white/10">
+        <div class="text-xl font-black italic">JJH<span class="text-sky-400">.</span></div>
+        <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest">
+            <a href="index.html">Accueil</a>
+            <a href="apropos.html">À propos</a>
+            <a href="engagement.html">Engagement</a>
+            <a href="vision.html">Vision</a>
+            <a href="idees.html">Réflexions</a>
+            <a href="impact.html">Impact</a>
+            <a href="contact.html" class="text-sky-400">Contact</a>
         </div>
+    </nav>
 
-        <p class="mt-16 text-slate-500 text-[10px] uppercase tracking-[0.4em] font-medium">
-            Joseph Junior Henry — Leadership & Innovation
-        </p>
+    <div id="full-screen-menu">
+        <a href="index.html" class="menu-item">Accueil</a>
+        <a href="apropos.html" class="menu-item">À propos</a>
+        <a href="engagement.html" class="menu-item">Engagement</a>
+        <a href="vision.html" class="menu-item">Vision nationale</a>
+        <a href="idees.html" class="menu-item">Réflexions</a>
+        <a href="impact.html" class="menu-item">Impact social</a>
+        <a href="contact.html" class="menu-item" style="color: #38bdf8;">Contact</a>
+    </div>
+
+    <main class="pt-32 pb-20 px-6 text-center">
+        <h1 class="text-4xl font-black mb-10 uppercase italic tracking-tighter">
+            Me <span class="text-sky-400">Contacter</span>
+        </h1>
+        
+        <div class="bg-white/5 border border-white/10 p-8 rounded-[30px] max-w-lg mx-auto space-y-8 backdrop-blur-lg">
+            <a href="mailto:henry.joseph.junior@gmail.com" class="block group">
+                <span class="block text-[10px] text-gray-500 uppercase mb-1">Email Direct</span>
+                <span class="text-lg font-bold break-all">henry.joseph.junior@gmail.com</span>
+            </a>
+
+            <a href="https://wa.me/50939045395" target="_blank" class="block p-5 bg-emerald-500/20 border border-emerald-500/30 rounded-2xl">
+                <span class="block text-[10px] text-emerald-500 uppercase mb-1">WhatsApp</span>
+                <span class="text-2xl font-black text-emerald-400">+509 39 04 53 95</span>
+            </a>
+        </div>
     </main>
 
     <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        const btn = document.getElementById('force-menu-btn');
+        const menu = document.getElementById('full-screen-menu');
         const icon = document.getElementById('menu-icon');
 
-        btn.onclick = (e) => {
-            e.stopPropagation();
-            const isOpen = menu.classList.toggle('show-menu');
+        btn.onclick = function() {
+            menu.classList.toggle('nav-visible');
             
-            if (isOpen) {
+            if (menu.classList.contains('nav-visible')) {
+                // Montre yon "X"
                 icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
+                btn.style.backgroundColor = "white"; // Chanje koulè bouton an
             } else {
+                // Remete Hamburger la
                 icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+                btn.style.backgroundColor = "#38bdf8";
             }
         };
 
-        // Fèmen si w klike deyò
-        document.addEventListener('click', (e) => {
-            if (menu.classList.contains('show-menu') && !menu.contains(e.target) && !btn.contains(e.target)) {
-                menu.classList.remove('show-menu');
+        // Fèmen meni an si w klike sou yon lyen
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.onclick = () => {
+                menu.classList.remove('nav-visible');
                 icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
-            }
+                btn.style.backgroundColor = "#38bdf8";
+            };
         });
     </script>
 </body>
